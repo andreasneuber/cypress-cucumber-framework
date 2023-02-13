@@ -16,14 +16,12 @@ It consists of environmental variables
 
 ## commands to execute the cypress scripts
 
-install all npm dependencies by running below command -
-"npm install"  
+install all npm dependencies by running: `npm install`
 
 ### Run via UI
 
-cypress page displays by running below command -
-"npm run cy:open"
-clcik on login.feature link under Integration folder
+cypress page displays by running this command - `npm run cy:open`
+click on login.feature link under Integration folder
 
 ### Run with command
 
