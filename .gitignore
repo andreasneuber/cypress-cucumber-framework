@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+cypress/videos
+node_modules/
+npm-debug.log
+cypress/screenshots
+test-results/
+cypress/e2e
+cypress/testData
+cypress/reports
+allure-report
+allure-results
