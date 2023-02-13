@@ -1,52 +1,150 @@
-# CYPRESS Introduction
+# cypress-cucumber-example
+Initial example of using Cypress with Cucumber.
 
-Cypress is the automation tool which helps to automate the real time browsers which are mainly related to chromium
+There are examples that are part of a Continuous Integration build in the main repo, that also showcase more advanced
+usage, please refer there as well - https://github.com/TheBrainFamily/cypress-cucumber-preprocessor/tree/master/cypress
 
-## jsconfig.json
+# Run example tests
 
-This file contains the set of values which helps to provide cypress commands intellisense for the entire project
+```
+npm install
+npm test
+```  
 
-## cypress.json
+# Tags usage
 
-It consists of cypress configuration related values
+### Tagging tests
+You can use tags to select which test should run using [cucumber's tag expressions](https://github.com/cucumber/cucumber/tree/master/tag-expressions).
+Keep in mind we are using newer syntax, eg. `'not @foo and (@bar or @zap)'`.
+In order to initialize tests using tags you will have to run cypress and pass TAGS environment variable.
 
-## cypress.env.json
+To make things faster and skip cypress opening a browser for every feature file (taking a couple seconds for each one), even the ones we want ignored, we use our own cypress-tags wrapper. It passes all the arguments to cypress, so use it the same way you would use cypress CLI. The only difference is it will first filter out the files we don't care about, based on the tags provided. 
 
-It consists of environmental variables
+### Examples:
 
-## commands to execute the cypress scripts
+There are a few tagged tests in these files:
 
-install all npm dependencies by running: `npm install`
+[Facebook.feature](https://github.com/TheBrainFamily/cypress-cucumber-example/blob/master/cypress/integration/socialNetworks/Facebook.feature)
+```
+@feature-tag
+Feature: The Facebook
 
-### Run via UI
+  I want to open a social network page
 
-cypress page displays by running this command - `npm run cy:open`
-click on login.feature link under Integration folder
+  @tag-to-include
+  Scenario: Opening a social network page
+    Given I open Facebook page
+    Then I see "Facebook" in the title
 
-### Run with command
+  @another-tag-to-include @some-other-tag
+  Scenario: Different kind of opening
+    Given I kinda open Facebook page
+    Then I am very happy
 
-Tag the scenarios with "@regression" and update the env tags in cypress.json file
-"env": {
-      "TAGS": "@regression"
-  }
-Run below command, then only regression test suite executes
-npm run cypress
+```
 
-Html & Json Reports will get generated 
 
-## Automation scripts creation process
+[GitHub.feature](https://github.com/TheBrainFamily/cypress-cucumber-example/blob/master/cypress/integration/socialNetworks/GitHub.feature)
+```
+@feature-tag @github-tag
+Feature: The GitHub
 
-1. Create the feature files and place it under integration folder
-2. Create the step definition files and place it under integration/step_definitions/
-    - Step definition file name should have same name as feature file name
-    Eg : login.feature -> login.js as step definition file
+  I want to tweet things
 
-## Set up the allure reporter
+  @tag-to-include
+  Scenario: Opening GitHub
+    Given I open GitHub page
+    Then I see "GitHub" in the title
 
-1. Install the Allure-reporter and allure-commandline
-    npm i -D mocha-allure-reporter
-    npm i -D allure-commandline
-2. Install mocha reporter
-    mocha --reporter mocha-allure-reporter
+  @another-tag-to-include
+  Scenario: Opening GitHub again
+    Given I open GitHub page
+    Then I see "GitHub" in the title
+```
 
-## Best Practices
+###### Simple Example
+  Run ```./node_modules/.bin/cypress-tags run -e TAGS='@feature-tag'``` in this repo. As both `Facebook.feature` and `GitHub.feature` 
+  have `@feature-tag` above the feature name, and `Google.feature` has no tags, the result should be: 
+  
+  ```
+      Spec                                                Tests  Passing  Failing  Pending  Skipped
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✔ socialNetworks/Facebook.feature           00:04        2        2        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔ socialNetworks/GitHub.feature            00:05        2        2        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    All specs passed!                           00:09        4        4        -        -        -
+```
+
+###### usage of `not`
+
+Run ```./node_modules/.bin/cypress-tags run -e TAGS='not @github-tag'``` in this repo. `Facebook.feature` and `Google.feature` will run, as only `GitHub.feature` has the unwanted tag. The result should be: 
+
+```
+      Spec                                                Tests  Passing  Failing  Pending  Skipped
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✔ socialNetworks/Facebook.feature           00:05        2        2        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    All specs passed!                           00:05        2        2        -        -        -
+```
+
+###### usage of `and` 
+
+Run ```./node_modules/.bin/cypress-tags run -e TAGS='@another-tag-to-include and @some-other-tag'``` in this repo. There is only one scenario that has both the tags, in `Facebook.feature`. The result should be:  
+
+```
+     Spec                                                Tests  Passing  Failing  Pending  Skipped
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✔ socialNetworks/Facebook.feature           00:03        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+    All specs passed!                           00:03        1        1        -        -        -
+
+```
+
+###### combinations
+
+Keep in mind that order matters and use parentheses wisely. The following commands will yield different results:  
+```./node_modules/.bin/cypress-tags run -e TAGS='@tag-to-include or @another-tag-to-include and not @github-tag'```
+
+```./node_modules/.bin/cypress-tags run -e TAGS='(@tag-to-include or @another-tag-to-include) and not @github-tag'```
+
+The first one will include scenario tagged `@tag-to-include` from the [GitHub.feature](https://github.com/TheBrainFamily/cypress-cucumber-example/blob/master/cypress/integration/socialNetworks/GitHub.feature), while 
+the second one will skip all scenarios from it.
+
+### Smart tagging
+Start your tests without setting any tags. And then put a @focus on the scenario (or scenarios) you want to focus on while development or bug fixing.
+
+For example:
+```gherkin
+Feature: Smart Tagging
+
+  As a cucumber cypress plugin which handles Tags
+  I want to allow people to select tests to run if focused
+  So they can work more efficiently and have a shorter feedback loop
+
+  Scenario: This scenario should not run if @focus is on another scenario
+    Then this unfocused scenario should not run
+
+  @focus
+  Scenario: This scenario is focused and should run
+    Then this focused scenario should run
+
+  @this-tag-affects-nothing
+  Scenario: This scenario should also not run
+    Then this unfocused scenario should not run
+
+  @focus
+  Scenario: This scenario is also focused and also should run
+    Then this focused scenario should run
+```
+
+# Scoped hooks:
+
+Unfortunately, running all tests through GUI causes an unexpected behavior with hooks:
+
+[TheBrainFamily/cypress-cucumber-preprocessor#139](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor/issues/139)
+which is an acknowledged bug in cypress itself:
+
+[cypress-io/cypress#3323](https://github.com/cypress-io/cypress/issues/3323)
+
+Our advice is to not use the "run all" in the GUI - which would be slow once you have enough .feature files anyway. Running through cypress run (for CI use) works as described. 

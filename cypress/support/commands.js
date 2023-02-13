@@ -1,32 +1,25 @@
-// export {}; // needed in files which don't have an import to trigger ES6 module usage
-// declare global {
-//   // eslint-disable-next-line @typescript-eslint/no-namespace,no-redeclare
-//   namespace Cypress {
-//     interface Chainable<Subject> {
-//       clickNavLink(path: [string, string]): Chainable<Element>;
-//       byTestID(selector: string): Chainable<Element>;
-//       byTestActionID(selector: string): Chainable<Element>;
-//       byLegacyTestID(selector: string): Chainable<Element>;
-//       byButtonText(selector:string):Chainable<Element>;
-//     }
-//   }
-// }
-
-// // any command added below, must be added to global Cypress interface above
-
-// Cypress.Commands.add('clickNavLink', (path: [string, string]) => {
-//   cy.get(`[data-component="pf-nav-expandable"]`) // this assumes all top level menu items are expandable
-//     .contains(path[0])
-//     .click(); // open top, expandable menu
-//   cy.get('#page-sidebar')
-//     .contains(path[1])
-//     .click();
-// });
-
-// Cypress.Commands.add('byTestID', (selector: string) => cy.get(`[data-test="${selector}"]`));
-// Cypress.Commands.add('byTestActionID', (selector: string) =>
-//   cy.get(`[data-test-action="${selector}"]:not(.pf-m-disabled)`),
-// );
-// Cypress.Commands.add('byLegacyTestID', (selector: string) =>
-//   cy.get(`[data-test-id="${selector}"]`),);
-// Cypress.Commands.add('byButtonText', (selector:string) => cy.get('button[type="button"]').contains(`${selector}`));
+// ***********************************************
+// This example commands.js shows you how to
+// create various custom commands and overwrite
+// existing commands.
+//
+// For more comprehensive examples of custom
+// commands please read more here:
+// https://on.cypress.io/custom-commands
+// ***********************************************
+//
+//
+// -- This is a parent command --
+// Cypress.Commands.add("login", (email, password) => { ... })
+//
+//
+// -- This is a child command --
+// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
+//
+//
+// -- This is a dual command --
+// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
+//
+//
+// -- This is will overwrite an existing command --
+// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
