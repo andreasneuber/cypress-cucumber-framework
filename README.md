@@ -1,4 +1,4 @@
-# cypress-cucumber-example
+# cypress-cucumber-framework
 Initial example of using Cypress with Cucumber.
 
 There are examples that are part of a Continuous Integration build in the main repo, that also showcase more advanced
@@ -147,4 +147,12 @@ which is an acknowledged bug in cypress itself:
 
 [cypress-io/cypress#3323](https://github.com/cypress-io/cypress/issues/3323)
 
-Our advice is to not use the "run all" in the GUI - which would be slow once you have enough .feature files anyway. Running through cypress run (for CI use) works as described. 
+Our advice is to not use the "run all" in the GUI - which would be slow once you have enough .feature files anyway. 
+Running through cypress run (for CI use) works as described.
+
+# Reports
+Steps to create Cucumber HTML report
+- Run tests with `npm test`
+- json files in dir `cypress/cucumber-json` will be updated
+- Then run `node cucumber-html-report.js`
+- Open file `cucumber-html-report.js` in browser
