@@ -1,8 +1,10 @@
-class celsiusToFahrenheitPage extends BasePage {
+//const basePage = require("cypress/support/pageObjects/")
 
-    url = "?action=form6";
+class celsiusToFahrenheitPage {
 
-    static visitCelsiusToFahrenheitPage() {
+    static url = "?action=form6";
+
+    static visit() {
         cy.visit(this.url);
     }
 

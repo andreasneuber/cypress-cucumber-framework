@@ -1,7 +1,7 @@
 {
-  "name": "cypress-cucumber-example",
+  "name": "cypress-cucumber-framework",
   "version": "1.0.0",
-  "description": "Example of cypress with cucumber",
+  "description": "Sample implementation of Cypress together with Cucumber",
   "main": "index.js",
   "scripts": {
     "test": "cypress run --spec \"**/*.feature\"",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheBrainFamily/cypress-cucumber-example.git"
+    "url": "git+https://github.com/andreasneuber/cypress-cucumber-framework.git"
   },
   "keywords": [
     "cypress",
@@ -19,9 +19,9 @@
   "author": "Lukasz Gandecki",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TheBrainFamily/cypress-cucumber-example/issues"
+    "url": "https://github.com/andreasneuber/cypress-cucumber-framework/issues"
   },
-  "homepage": "https://github.com/TheBrainFamily/cypress-cucumber-example#readme",
+  "homepage": "https://github.com/andreasneuber/cypress-cucumber-framework#readme",
   "dependencies": {
     "cypress": "^12.5.0",
     "cypress-cucumber-preprocessor": "^4.3.0"
