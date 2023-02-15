@@ -11,6 +11,15 @@ When(/^I submit username "([^"]*)" and password "([^"]*)"$/, function (username,
     loginPage.clickLogin();
 });
 Then(/^I will be logged into the Admin Dashboard$/, function () {
-    expect(userAccountPage.displayAdminDashboard()).to.be.true;
-//Assert.assertTrue(this.userAccountPage.displayAdminDashboard(), "Admin Dashboard is not displayed");
+    userAccountPage.displayAdminDashboard().should('be.visible');
+});
+When(/^Admin searches for employee "([^"]*)"$/, function () {
+    userAccountPage.navigateToHumanResourcesSection();
+    Assert.assertTrue(this.employeePage.employeePageIsDisplayed(), "Employee Page is not displayed");
+
+    this.employeePage.fillEmployeeNameInput(employeeName);
+    this.employeePage.clickSearchBtn();
+});
+Then(/^information appears that employee "([^"]*)" belongs to department "([^"]*)"$/, function () {
+
 });

@@ -15,5 +15,5 @@ Steps to create Cucumber HTML report
 - Open file `cucumber-html-report.js` in browser
 
 ## Helpful links
-- [https://github.com/TheBrainFamily/cypress-cucumber-preprocessor/tree/master/cypress](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor/tree/master/cypress)
+- [https://docs.cypress.io/guides/guides/command-line](https://docs.cypress.io/guides/guides/command-line)
 - [https://github.com/makambalaji/cypress-cucumber](https://github.com/makambalaji/cypress-cucumber)

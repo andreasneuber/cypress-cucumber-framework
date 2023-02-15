@@ -1,11 +1,11 @@
 {
   "name": "cypress-cucumber-framework",
   "version": "1.0.0",
-  "description": "Sample implementation of Cypress together with Cucumber",
+  "description": "Sample implementation of Cypress using Cucumber",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --spec \"**/*.feature\"",
-    "test:all": "cypress run --spec \"**/*.features\""
+    "test": "cypress run --spec \"**/AdminPrivileges.feature\"",
+    "test:all": "cypress run --spec \"**/*.feature\""
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "cucumber",
     "testing"
   ],
-  "author": "Lukasz Gandecki",
+  "author": "Andreas Neuber",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/andreasneuber/cypress-cucumber-framework/issues"

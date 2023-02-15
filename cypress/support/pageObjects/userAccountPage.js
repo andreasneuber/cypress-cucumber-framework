@@ -19,13 +19,7 @@ class userAccountPage {
     }
 
     static displayAdminDashboard() {
-        let visible = false;
-        cy.get('h2').contains('Admin Dashboard').then(title => {
-            if (title.is(':visible')){
-                visible = true;
-            }
-        })
-        return visible;
+        return cy.get('h2').contains('Admin Dashboard');
     }
 
     static navigateToHumanResourcesSection() {
