@@ -2,7 +2,7 @@ Feature: Admin Privileges
   Description: The purpose of this feature is to illustrate the usage of the Background keyword
 
 
-  Scenario: Admin User is Logged In
+  Background: Admin User is Logged In
     Given I navigate to login page
     When I submit username "admin" and password "pw1234"
     Then I will be logged into the Admin Dashboard

@@ -1,6 +1,7 @@
 import {Given, When, Then, Before} from "cypress-cucumber-preprocessor/steps";
 import loginPage from "../../support/pageObjects/loginPage.js";
 import userAccountPage from "../../support/pageObjects/userAccountPage.js";
+import employeePage from "../../support/pageObjects/employeePage.js";
 
 Given(/^I navigate to login page$/, function () {
     loginPage.visit();
@@ -13,13 +14,15 @@ When(/^I submit username "([^"]*)" and password "([^"]*)"$/, function (username,
 Then(/^I will be logged into the Admin Dashboard$/, function () {
     userAccountPage.displayAdminDashboard().should('be.visible');
 });
-When(/^Admin searches for employee "([^"]*)"$/, function () {
+When(/^Admin searches for employee "([^"]*)"$/, function (employeeName) {
     userAccountPage.navigateToHumanResourcesSection();
-    Assert.assertTrue(this.employeePage.employeePageIsDisplayed(), "Employee Page is not displayed");
-
-    this.employeePage.fillEmployeeNameInput(employeeName);
-    this.employeePage.clickSearchBtn();
+    employeePage.employeePageIsDisplayed().should('be.visible');
+    employeePage.fillEmployeeNameInput(employeeName);
+    employeePage.clickSearchBtn();
 });
-Then(/^information appears that employee "([^"]*)" belongs to department "([^"]*)"$/, function () {
-
+Then(/^information appears that employee "([^"]*)" belongs to department "([^"]*)"$/,
+    function (expectedEmployeeName, expectedDepartmentName) {
+    employeePage.employeeRecordIsDisplayed().should('be.visible');
+    employeePage.grabEmployeeName().should('equal', expectedEmployeeName);
+    employeePage.grabDepartmentName().should('equal', expectedDepartmentName);
 });
