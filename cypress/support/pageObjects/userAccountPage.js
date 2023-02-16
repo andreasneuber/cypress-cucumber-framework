@@ -28,8 +28,8 @@ class userAccountPage {
 
     static navigateToSalesSection() {
         cy.get('#sales-statistics-link').click();
+        //cy.wait(3000);
     }
-
 }
 
 export default userAccountPage
