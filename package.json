@@ -4,7 +4,7 @@
   "description": "Sample implementation of Cypress using Cucumber",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --spec \"**/AdminPrivileges.feature\"",
+    "test": "cypress run --spec \"**/Creditcard.feature\"",
     "test:all": "cypress run --spec \"**/*.feature\""
   },
   "repository": {
