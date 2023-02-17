@@ -2,31 +2,25 @@
 
 class creditCardEntryPage {
 
-    static url = "?action=form4";
+    static url = "?action=form3";
 
     static visit() {
         cy.visit(this.url);
     }
 
-    static provideUsername(username) {
-        cy.get('input[name="user"]').clear().type(username);
+    static enterCardInformation(cardname, ccnumber, expiryDate, cvv) {
+        cy.get('#cname').clear().type(cardname);
+        cy.get('#ccnum').clear().type(ccnumber);
+        cy.get('#expdate').clear().type(expiryDate);
+        cy.get('#cvv').clear().type(cvv);
     }
 
-    static providePassword(password) {
-        cy.get('input[name="pw"]').clear().type(password);
+    static submitPayment() {
+        cy.get('#btnPaynow').click();
     }
 
-    static login(username, password) {
-        this.provideUsername(username);
-        this.providePassword(password);
-    }
-
-    static clickLogin() {
-        cy.get('#btnLogin').click();
-    }
-
-    static getTitleForm() {
-        cy.get('h2').should('have.text', 'User 123')
+    static getCreditCardInfoEntryForm() {
+        return cy.get('#ccentry');
     }
 }
 
