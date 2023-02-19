@@ -3,8 +3,8 @@ import loginPage from "../../support/pageObjects/loginPage.js";
 
 Given(/^I enter following for login$/, function (datatable) {
     const row = new Map();
-    row.set("username", datatable.rows()[0][0]);
-    row.set("password", datatable.rows()[0][1]);
+    row.set(datatable.raw()[0][0], datatable.rows()[0][0]);
+    row.set(datatable.raw()[0][1], datatable.rows()[0][1]);
 
     loginPage.provideUsername(row.get("username"));
     loginPage.providePassword(row.get("password"));
