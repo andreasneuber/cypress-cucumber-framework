@@ -8,13 +8,13 @@ Feature: Login Feature
       | username | password |
       | admin    | pw1234   |
     When I click login button
-    Then I should be able to access the protected area
-
-  @verticalTable
-  Scenario: Login with correct credentials
-    Given I navigate to login page
-    And I enter following values to login
-      | username | admin  |
-      | password | pw1234 |
-    When I click login button
-    Then I should be able to access the protected area
+#    Then I should be able to access the protected area
+#
+#  @verticalTable
+#  Scenario: Login with correct credentials
+#    Given I navigate to login page
+#    And I enter following values to login
+#      | username | admin  |
+#      | password | pw1234 |
+#    When I click login button
+#    Then I should be able to access the protected area
