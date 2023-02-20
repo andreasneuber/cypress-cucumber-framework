@@ -18,3 +18,4 @@ Steps to create Cucumber HTML report
 - [https://docs.cypress.io/guides/guides/command-line](https://docs.cypress.io/guides/guides/command-line)
 - [https://github.com/makambalaji/cypress-cucumber](https://github.com/makambalaji/cypress-cucumber)
 - [https://minium.vilt.io/docs/core/api/cucumber/](https://minium.vilt.io/docs/core/api/cucumber/)
+- [https://docs.cypress.io/guides/references/trade-offs#Permanent-trade-offs](https://docs.cypress.io/guides/references/trade-offs#Permanent-trade-offs)

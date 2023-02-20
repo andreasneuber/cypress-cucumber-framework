@@ -15,10 +15,8 @@ When(/^I click login button$/, function () {
 });
 Then(/^I should be able to access the protected area$/, function () {
     userAccountPage.displayAdminDashboard().should('be.visible');
-    // Assert.assertTrue(this.userForm.displayAdminDashboard(), "Admin Dashboard Is not displayed");
 });
 Given(/^I enter following values to login$/, function (datatable) {
-    //cy.log(datatable.raw()[0][1]);
     let username = datatable.raw()[0][1];
     let pw = datatable.raw()[1][1];
 
