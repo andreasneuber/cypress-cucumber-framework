@@ -1,4 +1,5 @@
 import {Given, When, Then, Before} from "cypress-cucumber-preprocessor/steps";
+
 Given(/^different people went to different sites$/, function () {
 
 });
