@@ -14,4 +14,7 @@ When(/^I click login button$/, function () {
 });
 Then(/^I should be able to access the protected area$/, function () {
 
+
+
+    Assert.assertTrue(this.userForm.displayAdminDashboard(), "Admin Dashboard Is not displayed");
 });

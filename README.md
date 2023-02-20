@@ -17,3 +17,4 @@ Steps to create Cucumber HTML report
 ## Helpful links
 - [https://docs.cypress.io/guides/guides/command-line](https://docs.cypress.io/guides/guides/command-line)
 - [https://github.com/makambalaji/cypress-cucumber](https://github.com/makambalaji/cypress-cucumber)
+- [https://minium.vilt.io/docs/core/api/cucumber/](https://minium.vilt.io/docs/core/api/cucumber/)
