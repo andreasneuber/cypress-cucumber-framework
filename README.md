@@ -12,7 +12,7 @@ Steps to create Cucumber HTML report
 - Run tests with `npm test`
 - json files in dir `cypress/cucumber-json` will be updated
 - Then run `node cucumber-html-report.js`
-- Open file `cucumber-html-report.js` in browser
+- Open file `reports/cucumber-htmlreport.html/index.html` in browser
 
 ## Helpful links
 - [https://docs.cypress.io/guides/guides/command-line](https://docs.cypress.io/guides/guides/command-line)

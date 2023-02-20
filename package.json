@@ -4,8 +4,8 @@
   "description": "Sample implementation of Cypress using Cucumber",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --spec \"**/ProvideYourDetails.feature\"",
-    "test:all": "cypress run --spec \"**/*.feature\""
+    "test:all": "cypress run --spec \"**/ProvideYourDetails.feature\"",
+    "test": "cypress run --spec \"**/*.feature\""
   },
   "repository": {
     "type": "git",
