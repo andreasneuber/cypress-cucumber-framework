@@ -1,5 +1,9 @@
 # cypress-cucumber-framework
 
+## Application under test
+The feature files, step definitions and page objects were written for https://github.com/andreasneuber/automatic-test-sample-site.
+Readme in this repo has further details how to set it up.
+
 ## Run tests
 
 ```
